@@ -61,12 +61,9 @@ public class Cuenta {
 		this.transacciones = transacciones;
 	}
 
-	/*
-	*	Bidireccion atravez de un metodo que agrega a la lista.
-	*/
-	public void agregarTransaccion(Transaccion transaccion){
-		this.transacciones.add(transaccion);
-		transaccion.setCuenta(this);
-	}
-    
+    // Se hace relacion bidireccional con este metodo
+    public void agregarTransaccion(Transaccion transaccion){
+        this.transacciones.add(transaccion);
+        transaccion.setCuenta(this);
+    }
 }

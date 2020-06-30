@@ -1,24 +1,93 @@
 package ar.com.ada.api.billeteravirtual.services;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import ar.com.ada.api.billeteravirtual.entities.Billetera;
+import ar.com.ada.api.billeteravirtual.entities.Cuenta;
+import ar.com.ada.api.billeteravirtual.entities.Transaccion;
+import ar.com.ada.api.billeteravirtual.repositories.BilleteraRepository;
 
 @Service
 public class BilleteraService {
+
+    @Autowired
+    BilleteraRepository billeteraRepository;
+
+    public void grabar(Billetera billetera){
+        billeteraRepository.save(billetera);
+    }
     
-    /* 1.Metodo: Cargar saldo
-    1.1-- Recibir un importe, se busca una billetera por id,
-    se busca una cuenta por la moneda
-    1.2-- hacer transaccion 
-    1.3-- actualizar el saldo de la billetera */
 
-    /* 2. Metodo: enviar plata
-    2.1-- recibir un importe, la moneda en la que va a estar ese importe
-    recibir una billetera de origen y otra de destino
-    2.2-- actualizar los saldos de las cuentas (a una se le suma y a la otra se le resta)
-    2.3-- generar dos transacciones
-    */
+/**
+     * Metodo cargarSaldo 
+     * buscar billetera por id 
+     * se identifica cuenta por moneda
+     * determinar importe a cargar 
+     * hacer transaccion
+     * 
+     * ver delegaciones sobre entidades
+     * 
+     */
 
-    /* 3. Metodo: consultar saldo 
-    3.1-- recibir el id de la billetera y la moneda en la que esta la cuenta
-    */
+    
+
+    public void cargarSaldo(BigDecimal saldo, String moneda, Integer billeteraId, 
+    String conceptoOperacion, String detalle){
+    
+        Billetera billetera = billeteraRepository.findByBilleteraId(billeteraId);
+        
+        Cuenta cuenta = billetera.getCuenta(moneda);
+
+        Transaccion transaccion = new Transaccion();
+        //transaccion.setCuenta(cuenta);
+        transaccion.setMoneda(moneda);
+        transaccion.setFecha(new Date());
+        transaccion.setConceptoOperacion(conceptoOperacion);
+        transaccion.setDetalle(detalle);
+        transaccion.setImporte(saldo);
+        transaccion.setTipoOperacion(1);// 1 Entrada, 0 Salida
+        transaccion.setEstadoId(2);// -1 Rechazada 0 Pendiente 2 Aprobada
+        transaccion.setDeCuentaId(cuenta.getCuentaId());
+        transaccion.setDeUsuarioId(billetera.getPersona().getUsuario().getUsuarioId());
+        transaccion.setaUsuarioId(billetera.getPersona().getUsuario().getUsuarioId());
+        transaccion.setaCuentaId(cuenta.getCuentaId());
+        
+        cuenta.agregarTransaccion(transaccion);
+
+        BigDecimal saldoActual = cuenta.getSaldo();
+        BigDecimal saldoNuevo = saldoActual.add(saldo);
+        cuenta.setSaldo(saldoNuevo);
+
+        this.grabar(billetera);
+    }
+
+    
+
+
+    /**
+     * Metodo enviarSaldo 
+     * buscar billetera por id 
+     * se identifica cuenta por moneda
+     * determinar importe a transferir
+     * billetera de origen y billetera destino
+     * actualizar los saldos de las cuentas (resta en la origen y suma en la destino)
+     * generar 2 transacciones
+     * 
+     * ver delegaciones sobre entidades
+     * 
+     */
+
+     /**
+      * Metodo consultarSaldo
+      * buscar billetera por id
+      * se identifica cuenta por moneda
+      * traer saldo
+      */
+
+
+     
 }

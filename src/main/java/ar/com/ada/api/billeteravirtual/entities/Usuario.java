@@ -1,6 +1,6 @@
 package ar.com.ada.api.billeteravirtual.entities;
 
-import java.util.Date;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -8,10 +8,10 @@ import javax.persistence.*;
 @Table(name = "usuario")
 public class Usuario {
 
-	@Id
-	@Column(name = "usuario_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer usuarioId;
+    @Id
+    @Column(name = "usuario_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int usuarioId;
     private String username;
     private String password;
     private String email;
@@ -21,13 +21,13 @@ public class Usuario {
 	@JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
     private Persona persona;
 
-	public Integer getUsuarioId() {
-		return usuarioId;
-	}
+    public int getUsuarioId() {
+        return usuarioId;
+    }
 
-	public void setUsuarioId(Integer usuarioId) {
-		this.usuarioId = usuarioId;
-	}
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
+    }
 
 	public String getUsername() {
 		return username;
@@ -57,9 +57,9 @@ public class Usuario {
 		return fechaLogin;
 	}
 
-	public void setFechaLoing(Date fechaLogin) {
-		this.fechaLogin = fechaLogin;
-	}
+    public void setFechaLogin(Date fechaLogin) {
+        this.fechaLogin = fechaLogin;
+    }
 
 	public Persona getPersona() {
 		return persona;

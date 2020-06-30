@@ -1,7 +1,6 @@
 package ar.com.ada.api.billeteravirtual.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -43,9 +42,22 @@ public class Billetera {
 		this.cuentas = cuentas;
 	}   
 
-	public void agregarCuenta(Cuenta cuenta){
-		this.cuentas.add(cuenta);
-		cuenta.setBilletera(this);
-	}
+    // se crea este metodo para hacer la relacion bidireccional y agregar la cuenta a la billetera
+    public void agregarCuenta(Cuenta cuenta){
+        this.cuentas.add(cuenta);
+        cuenta.setBilletera(this);
+    }
+
+    public Cuenta getCuenta(String moneda){
+
+        for(Cuenta cuenta: this.cuentas){
+
+            if(cuenta.getMoneda().equals(moneda)){
+                
+                return cuenta;
+            }
+        }
+        return null;
+    }
 
 }

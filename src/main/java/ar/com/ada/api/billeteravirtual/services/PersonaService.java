@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.billeteravirtual.entities.Persona;
-import ar.com.ada.api.billeteravirtual.repos.PersonaRepository;
+import ar.com.ada.api.billeteravirtual.repositories.PersonaRepository;
 
 @Service
 public class PersonaService {
