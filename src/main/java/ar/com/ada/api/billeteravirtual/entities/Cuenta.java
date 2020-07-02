@@ -5,6 +5,9 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "cuenta")
 public class Cuenta {
@@ -19,6 +22,7 @@ public class Cuenta {
 	@JoinColumn(name = "billetera_id",referencedColumnName = "billetera_id")
     private Billetera billetera;
 	@OneToMany(mappedBy = "cuenta",cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
     private List<Transaccion> transacciones = new ArrayList<>();
 
 	public Integer getCuentaId() {
