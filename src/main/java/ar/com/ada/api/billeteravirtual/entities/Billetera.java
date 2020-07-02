@@ -1,5 +1,6 @@
 package ar.com.ada.api.billeteravirtual.entities;
 
+import java.util.ArrayList;
 import java.util.*;
 
 import javax.persistence.*;
