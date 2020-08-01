@@ -37,4 +37,4 @@
 
 
 
-JAVA/ Spring Boot /API Rest . Proyecto de creación de una Billetera Virtual con funcionalidades: Registro, Login, envío y recepción de dinero,  notificaciones por e-mail con MailGun, e introcción a Testing Unitarios . Realizada durante la cursada en Ada ITW.
+
