@@ -1,10 +1,38 @@
-# Api-BilleteraVirtual
-<p>Deploy en  https://ewalletbylau.herokuapp.com</p>
-<p>Documentacion disponible en: https://documenter.getpostman.com/view/11716574/T1Ds8auK</p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/63796774/89109234-c6a00900-d415-11ea-844c-25514c1d0572.png">
+</p>
+
+## Funcionalidad
+- [x] Registrar Usuario
+- [x] Login Usuario
+- [x] Enviar dinero
+- [x] Cargar Saldo
+- [x] Consultar saldo en todas las cuentas
+- [x] Consultar saldo en pesos
+- [x] Consultar saldo en dólares
+- [x] Consultar movimientos
+- [x] Envío de notificaciones por mail
+
+# Documentación
+
+[Conocé como funciona esta API](https://documenter.getpostman.com/view/11716574/T1Ds8auK)
+
+# Deployment
+
+[Deploy en Heroku](https://ewalletbylau.herokuapp.com)
+
+
+## Construído con…
+- [x] JAVA
+- [x] Springboot
+- [x] Heroku
+- [x] Posgres
+
+
 
 
 <p align="center">
-  <img width="200" height="200" src="https://user-images.githubusercontent.com/63796774/88346427-af2e9500-cd1e-11ea-8dd4-9d13e4f3f61a.gif">
+  <img width="200" height="200" src="https://user-images.githubusercontent.com/63796774/89109273-1d0d4780-d416-11ea-8893-9c0d8bb9065f.gif">
 </p>
 
 
